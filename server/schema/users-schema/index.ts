@@ -57,6 +57,6 @@ const userSchema = new Schema <IUser> ({
     timestamps : true
 })
 
-const User = model <IUser>("users", userSchema)
+const User = model <IUser>("Users", userSchema)
 
 export {User, IUser , UserRole}
