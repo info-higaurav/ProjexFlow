@@ -1,5 +1,5 @@
 import { IUser , User } from "../../schema/users-schema";
-import { signUpPayloadValidation } from "../validation/user-validations";
+import { signInPayloadValidation, signUpPayloadValidation } from "../validation/user-validations";
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'
 class UserServices {
@@ -27,6 +27,11 @@ class UserServices {
       return signUpPayloadValidation.parse(payload);
    }
 
+   async verifySignInPayload (payload:{email:string,password:string}){
+      return signInPayloadValidation.parse(payload);
+   }
+
+
    async generateAccessToken (id:string){
       const accessToken = jwt.sign({_id:id}, process.env.ADMIN_JWT_SECRECT_KEY as string , {expiresIn:'1d'})
       await User.findByIdAndUpdate(id, { "auth.accessToken": accessToken }, { runValidators: false });
@@ -41,6 +46,11 @@ class UserServices {
 
    async hashPassword (password:string){
       const hashedPassword = await bcrypt.hash(password, 10)
+      return hashedPassword;
+   }
+
+   async verifyHashPassword (password:string , hashPass:string){
+      const hashedPassword = await bcrypt.compare(password, hashPass)
       return hashedPassword;
    }
 }
