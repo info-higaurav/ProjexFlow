@@ -13,11 +13,10 @@ const signUpPayloadValidation = z.object({
     auth:z.object({
         email : z.string({
             required_error:"Email is required",
-            invalid_type_error:"A Valid email is required"
+            invalid_type_error:"Email must be a string"
         })
-
         .email({
-           message:"Invalid Email"
+           message:"Valid email is required"
         }),
 
         password: z.string({
