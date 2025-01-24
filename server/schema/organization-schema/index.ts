@@ -4,7 +4,13 @@ import mongoose, { Schema, Document } from 'mongoose';
 interface IOrganization extends Document {
   name: string;
   description: string;
-  subscription?: Schema.Types.ObjectId; 
+  subscription?:{
+    planId:Schema.Types.ObjectId;
+    startDate:Date;
+    endDate:Date;
+    status:string;
+    billingCycle: string
+  }; 
   createdBy: Schema.Types.ObjectId;
 }
 
@@ -19,8 +25,9 @@ const organizationSchema = new Schema<IOrganization>({
     required: true,
   },
   subscription: {
-    type: Schema.Types.ObjectId, 
-    ref: 'Subscription',
+    type: Object, 
+    required:true,
+    default:{}
 
   },
   createdBy: {

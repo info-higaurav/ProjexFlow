@@ -6,8 +6,22 @@ import ApiResponse from "../../utils/api-utils/api-response";
 export const createOrgnization = async(req:Request , res:Response , next:NextFunction)=>{
     let payload = req.body || {}
     if(payload.subscription === ""){
-        payload = {...payload , subscription:"6793df3595d4f22347796eca"}
+        const subscription = {
+            planId: "6793df3595d4f22347796eca",
+            startDate: new Date().toISOString(), // Current date in ISO format
+            endDate: (function() {
+                const startDate = new Date();
+                const endDate = new Date(startDate);
+                endDate.setMonth(endDate.getMonth() + 1); // Add 1 month
+                return endDate.toISOString(); // Return the end date in ISO format
+            })(),
+            status: "active",
+            billingCycle: "monthly"
+        };
+
+        payload = {...payload , subscription:subscription}      
     }
+
     const userId = (req as any).user
 
     const orgServices = new OrganizationServices();
