@@ -1,4 +1,4 @@
-import { IUser , User } from "../../schema/users-schema";
+import { IUser , User } from "../../schema/user-schema";
 import { signInPayloadValidation, signUpPayloadValidation } from "../validation/user-validations";
 import jwt from 'jsonwebtoken'
 import bcrypt from 'bcrypt'

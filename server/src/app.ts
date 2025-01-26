@@ -18,8 +18,10 @@ app.use(cookieParser())
 // importing necessary routes
 import userRoutes from './../routes/user-routes'
 import organizationRoutes from '../routes/managment-routes'
+import projectRoute from '../routes/project-routes'
 
 app.use("/api/v1/users" , userRoutes)
 app.use("/api/v1/organization", organizationRoutes)
+app.use("/api/v1/projects", projectRoute)
 
 export default app;

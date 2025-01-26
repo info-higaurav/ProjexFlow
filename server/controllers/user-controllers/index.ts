@@ -1,6 +1,5 @@
 import { Request,  NextFunction, Response } from "express";
 import ApiResponse from "../../utils/api-utils/api-response";
-import { User } from "../../schema/users-schema";
 import UserServices from "../../services/user-services";
 
 export const routeHealth =async (req:Request, res:Response , next:NextFunction)=>{

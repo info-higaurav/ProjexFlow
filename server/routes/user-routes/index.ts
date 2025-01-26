@@ -12,4 +12,8 @@ userRoutes.route("/signup")
 
 userRoutes.route("/signin")
     .post(asyncWrapper(handleSignIn))
-export default userRoutes;
+
+userRoutes.route("/create-users")
+    .post(asyncWrapper(handlleSignUp))
+
+    export default userRoutes;

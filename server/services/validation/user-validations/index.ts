@@ -1,5 +1,5 @@
 import z from 'zod'
-import { UserRole } from '../../../schema/users-schema'
+import { UserRole } from '../../../schema/user-schema'
 
 const signUpPayloadValidation = z.object({
     profile:z.object({
@@ -30,7 +30,7 @@ const signUpPayloadValidation = z.object({
         .regex(/\d/, { message: "Password must contain at least one numeric character." })
         .regex(/[@$!%*?&]/, { message: "Password must contain at least one special character (@, $, !, %, *, ?, &)." }),
 
-        role: z.enum([UserRole.admin, UserRole.user],{
+        role: z.enum([UserRole.admin, UserRole.user , UserRole.manager],{
             required_error:"User role is required",
             invalid_type_error:"User role must be either admin or user"
         })
