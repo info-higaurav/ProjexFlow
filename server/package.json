@@ -7,7 +7,9 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon ./api/index.ts",
+    "build": "tsc",
+    "start": "node ./dist/api/index.js"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",

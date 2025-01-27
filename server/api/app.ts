@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 // importing necessary routes
-import userRoutes from './../routes/user-routes'
+import userRoutes from '../routes/user-routes'
 import organizationRoutes from '../routes/managment-routes'
 import projectRoute from '../routes/project-routes'
 import teamRoutes from '../routes/team-routes'
