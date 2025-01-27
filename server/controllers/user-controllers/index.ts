@@ -29,14 +29,14 @@ export const handlleSignUp =async (req:Request, res:Response , next:NextFunction
         secure: true,
         expires: new Date(Date.now() + 24 * 60 * 60 * 1000), //1d
         sameSite: "none",
-        domain: process.env.NODE_ENV === "production" ? process.env.PRODUCTION_HOST : process.env.LOCALHOST
+        domain: process.env.NODE_ENV === "production" ? process.env.PROD_HOST : process.env.LOCALHOST
     })
     res.cookie("refreshToken", refreshToken ,{
         httpOnly: true,
         secure: true,
         expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), //30d
         sameSite: "none",
-        domain: process.env.NODE_ENV === "production" ? process.env.PRODUCTION_HOST : process.env.LOCALHOST
+        domain: process.env.NODE_ENV === "production" ? process.env.PROD_HOST : process.env.LOCALHOST
     })
 
     res.set({
@@ -72,14 +72,14 @@ export const handleSignIn = async(req:Request, res:Response, next:NextFunction)=
         secure: true,
         expires: new Date(Date.now() + 24 * 60 * 60 * 1000), //1d
         sameSite: "none",
-        domain: process.env.NODE_ENV === "production" ? process.env.PRODUCTION_HOST : process.env.LOCALHOST
+        domain: process.env.NODE_ENV === "production" ? process.env.PROD_HOST : process.env.LOCALHOST
     })
     res.cookie("refreshToken", refreshToken ,{
         httpOnly: true,
         secure: true,
         expires: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), //30d
         sameSite: "none",
-        domain: process.env.NODE_ENV === "production" ? process.env.PRODUCTION_HOST : process.env.LOCALHOST
+        domain: process.env.NODE_ENV === "production" ? process.env.PROD_HOST : process.env.LOCALHOST
     })
 
     res.set({
